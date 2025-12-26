@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:rubbish_plan/providers/version.dart';
+import 'package:rubbish_plan/providers/app_info_provider.dart';
 import 'package:rubbish_plan/serivces/app_config_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,10 +29,10 @@ void _configureAsyncDependencies() {
     return AppConfigService(prefs);
   });
   getIt.registerSingletonAsync<PackageInfo>(() => PackageInfo.fromPlatform());
-  getIt.registerSingletonAsync<VersionProvider>(() async {
+  getIt.registerSingletonAsync<AppInfoProvider>(() async {
     await getIt.isReady<PackageInfo>();
     final packageInfo = getIt<PackageInfo>();
-    return VersionProvider(packageInfo);
+    return AppInfoProvider(packageInfo);
   });
 }
 

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rubbish_plan/injection/injector.dart';
 import 'package:rubbish_plan/l10n/app_localizations.dart';
-import 'package:rubbish_plan/providers/version.dart';
+import 'package:rubbish_plan/providers/app_info_provider.dart';
 import 'package:rubbish_plan/utils/open_link.dart';
 import 'package:rubbish_plan/widgets/dialog/dialog.dart';
 
 class AboutPage extends StatelessWidget {
   AboutPage({super.key});
-  final versionProvider = getIt<VersionProvider>();
+  final versionProvider = getIt<AppInfoProvider>();
 
   @override
   Widget build(BuildContext context) {
