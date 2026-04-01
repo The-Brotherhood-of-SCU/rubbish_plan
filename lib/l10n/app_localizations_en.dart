@@ -129,4 +129,168 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get globalSetting => 'Global Setting';
+
+  @override
+  String get addCourse => 'Add Course';
+
+  @override
+  String get editCourse => 'Edit Course';
+
+  @override
+  String get deleteCourse => 'Delete Course';
+
+  @override
+  String get deleteCourseConfirm =>
+      'Are you sure you want to delete this course?';
+
+  @override
+  String get courseName => 'Course Name';
+
+  @override
+  String get teacher => 'Teacher';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get courseColor => 'Course Color';
+
+  @override
+  String get week => 'Week';
+
+  @override
+  String get startWeek => 'Start Week';
+
+  @override
+  String get endWeek => 'End Week';
+
+  @override
+  String get dayOfWeek => 'Day of Week';
+
+  @override
+  String get startSection => 'Start Section';
+
+  @override
+  String get endSection => 'End Section';
+
+  @override
+  String get monday => 'Mon';
+
+  @override
+  String get tuesday => 'Tue';
+
+  @override
+  String get wednesday => 'Wed';
+
+  @override
+  String get thursday => 'Thu';
+
+  @override
+  String get friday => 'Fri';
+
+  @override
+  String get saturday => 'Sat';
+
+  @override
+  String get sunday => 'Sun';
+
+  @override
+  String currentWeek(Object week) {
+    return 'Week $week';
+  }
+
+  @override
+  String weekRange(Object end, Object start) {
+    return 'Week $start - $end';
+  }
+
+  @override
+  String get weekType => 'Week Type';
+
+  @override
+  String get everyWeek => 'Every Week';
+
+  @override
+  String get oddWeek => 'Odd Week';
+
+  @override
+  String get evenWeek => 'Even Week';
+
+  @override
+  String get section => 'Section';
+
+  @override
+  String get sectionCount => 'Sections per Day';
+
+  @override
+  String get timeSlot => 'Time Slot';
+
+  @override
+  String get startTime => 'Start Time';
+
+  @override
+  String get endTime => 'End Time';
+
+  @override
+  String get semesterConfig => 'Semester Config';
+
+  @override
+  String get semesterName => 'Semester Name';
+
+  @override
+  String get semesterStartDate => 'Semester Start Date';
+
+  @override
+  String get semesterEndDate => 'Semester End Date';
+
+  @override
+  String get displaySetting => 'Display Setting';
+
+  @override
+  String get colorOpacity => 'Color Opacity';
+
+  @override
+  String get fontSize => 'Font Size';
+
+  @override
+  String get showTeacher => 'Show Teacher';
+
+  @override
+  String get showLocation => 'Show Location';
+
+  @override
+  String get showWeekend => 'Show Weekend';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get customColor => 'Custom Color';
+
+  @override
+  String get noCourseThisWeek => 'No courses this week';
+
+  @override
+  String get timeConflict => 'Time Conflict';
+
+  @override
+  String get timeConflictMessage =>
+      'The selected time slot conflicts with an existing course.';
+
+  @override
+  String get fieldRequired => 'This field is required';
+
+  @override
+  String get invalidWeekRange =>
+      'End week must be greater than or equal to start week';
+
+  @override
+  String get invalidSectionRange =>
+      'End section must be greater than start section';
 }

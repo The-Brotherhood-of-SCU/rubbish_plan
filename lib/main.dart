@@ -2,15 +2,19 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_ce/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:rubbish_plan/app.dart';
 import 'package:rubbish_plan/injection/injector.dart';
 
 void main() async {
-  configureDependencies();
+  WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) {
-    WidgetsFlutterBinding.ensureInitialized();
     DartPluginRegistrant.ensureInitialized();
+    final dir = await getApplicationDocumentsDirectory();
+    Hive.init(dir.path);
   }
+  configureDependencies();
   await ensureBasicDependencies();
   runApp(MyApp());
 }

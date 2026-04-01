@@ -330,6 +330,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Global Setting'**
   String get globalSetting;
+
+  /// No description provided for @addCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Course'**
+  String get addCourse;
+
+  /// No description provided for @editCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Course'**
+  String get editCourse;
+
+  /// No description provided for @deleteCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Course'**
+  String get deleteCourse;
+
+  /// No description provided for @deleteCourseConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this course?'**
+  String get deleteCourseConfirm;
+
+  /// No description provided for @courseName.
+  ///
+  /// In en, this message translates to:
+  /// **'Course Name'**
+  String get courseName;
+
+  /// No description provided for @teacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get teacher;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @courseColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Course Color'**
+  String get courseColor;
+
+  /// No description provided for @week.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get week;
+
+  /// No description provided for @startWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Week'**
+  String get startWeek;
+
+  /// No description provided for @endWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'End Week'**
+  String get endWeek;
+
+  /// No description provided for @dayOfWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Day of Week'**
+  String get dayOfWeek;
+
+  /// No description provided for @startSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Section'**
+  String get startSection;
+
+  /// No description provided for @endSection.
+  ///
+  /// In en, this message translates to:
+  /// **'End Section'**
+  String get endSection;
+
+  /// No description provided for @monday.
+  ///
+  /// In en, this message translates to:
+  /// **'Mon'**
+  String get monday;
+
+  /// No description provided for @tuesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Tue'**
+  String get tuesday;
+
+  /// No description provided for @wednesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Wed'**
+  String get wednesday;
+
+  /// No description provided for @thursday.
+  ///
+  /// In en, this message translates to:
+  /// **'Thu'**
+  String get thursday;
+
+  /// No description provided for @friday.
+  ///
+  /// In en, this message translates to:
+  /// **'Fri'**
+  String get friday;
+
+  /// No description provided for @saturday.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get saturday;
+
+  /// No description provided for @sunday.
+  ///
+  /// In en, this message translates to:
+  /// **'Sun'**
+  String get sunday;
+
+  /// No description provided for @currentWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Week {week}'**
+  String currentWeek(Object week);
+
+  /// No description provided for @weekRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Week {start} - {end}'**
+  String weekRange(Object end, Object start);
+
+  /// No description provided for @weekType.
+  ///
+  /// In en, this message translates to:
+  /// **'Week Type'**
+  String get weekType;
+
+  /// No description provided for @everyWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Every Week'**
+  String get everyWeek;
+
+  /// No description provided for @oddWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Odd Week'**
+  String get oddWeek;
+
+  /// No description provided for @evenWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Even Week'**
+  String get evenWeek;
+
+  /// No description provided for @section.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get section;
+
+  /// No description provided for @sectionCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections per Day'**
+  String get sectionCount;
+
+  /// No description provided for @timeSlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Slot'**
+  String get timeSlot;
+
+  /// No description provided for @startTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Time'**
+  String get startTime;
+
+  /// No description provided for @endTime.
+  ///
+  /// In en, this message translates to:
+  /// **'End Time'**
+  String get endTime;
+
+  /// No description provided for @semesterConfig.
+  ///
+  /// In en, this message translates to:
+  /// **'Semester Config'**
+  String get semesterConfig;
+
+  /// No description provided for @semesterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Semester Name'**
+  String get semesterName;
+
+  /// No description provided for @semesterStartDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Semester Start Date'**
+  String get semesterStartDate;
+
+  /// No description provided for @semesterEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Semester End Date'**
+  String get semesterEndDate;
+
+  /// No description provided for @displaySetting.
+  ///
+  /// In en, this message translates to:
+  /// **'Display Setting'**
+  String get displaySetting;
+
+  /// No description provided for @colorOpacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Opacity'**
+  String get colorOpacity;
+
+  /// No description provided for @fontSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Font Size'**
+  String get fontSize;
+
+  /// No description provided for @showTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Teacher'**
+  String get showTeacher;
+
+  /// No description provided for @showLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Location'**
+  String get showLocation;
+
+  /// No description provided for @showWeekend.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Weekend'**
+  String get showWeekend;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @customColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Color'**
+  String get customColor;
+
+  /// No description provided for @noCourseThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'No courses this week'**
+  String get noCourseThisWeek;
+
+  /// No description provided for @timeConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Conflict'**
+  String get timeConflict;
+
+  /// No description provided for @timeConflictMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The selected time slot conflicts with an existing course.'**
+  String get timeConflictMessage;
+
+  /// No description provided for @fieldRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get fieldRequired;
+
+  /// No description provided for @invalidWeekRange.
+  ///
+  /// In en, this message translates to:
+  /// **'End week must be greater than or equal to start week'**
+  String get invalidWeekRange;
+
+  /// No description provided for @invalidSectionRange.
+  ///
+  /// In en, this message translates to:
+  /// **'End section must be greater than start section'**
+  String get invalidSectionRange;
 }
 
 class _AppLocalizationsDelegate

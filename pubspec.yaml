@@ -43,6 +43,8 @@ dependencies:
 
   web: any
   async: any
+  hive_ce: ^2.19.3
+  path_provider: ^2.1.5
 dev_dependencies:
   flutter_test:
     sdk: flutter

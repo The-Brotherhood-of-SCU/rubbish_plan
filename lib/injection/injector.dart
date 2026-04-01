@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:rubbish_plan/providers/app_info_provider.dart';
 import 'package:rubbish_plan/providers/app_config_provider.dart';
+import 'package:rubbish_plan/providers/course_provider.dart';
+import 'package:rubbish_plan/serivces/database_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'injector.config.dart';
@@ -34,8 +36,18 @@ void _configureAsyncDependencies() {
     final packageInfo = getIt<PackageInfo>();
     return AppInfoProvider(packageInfo);
   });
+  getIt.registerSingletonAsync<DatabaseService>(() async {
+    final db = DatabaseService();
+    await db.init();
+    return db;
+  });
+  getIt.registerSingletonAsync<CourseProvider>(() async {
+    await getIt.isReady<DatabaseService>();
+    final db = getIt<DatabaseService>();
+    return CourseProvider(db);
+  });
 }
 
 Future<void> ensureBasicDependencies() async {
-  await getIt.isReady<AppConfigProvider>();
+  await getIt.isReady<CourseProvider>();
 }
