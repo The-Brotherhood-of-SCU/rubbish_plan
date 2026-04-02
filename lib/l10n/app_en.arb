@@ -36,6 +36,7 @@
     "confirmMessage":"Are you sure?",
     "environmentInfo":"Environment Info",
     "scheduleSetting":"Schedule Setting",
+    "scheduleManagement":"Schedule Management",
     "globalSetting":"Global Setting",
 
     "addCourse":"Add Course",

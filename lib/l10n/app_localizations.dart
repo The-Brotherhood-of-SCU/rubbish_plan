@@ -325,6 +325,12 @@ abstract class AppLocalizations {
   /// **'Schedule Setting'**
   String get scheduleSetting;
 
+  /// No description provided for @scheduleManagement.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule Management'**
+  String get scheduleManagement;
+
   /// No description provided for @globalSetting.
   ///
   /// In en, this message translates to:

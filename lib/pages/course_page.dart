@@ -3,6 +3,7 @@ import 'package:rubbish_plan/injection/injector.dart';
 import 'package:rubbish_plan/l10n/app_localizations.dart';
 import 'package:rubbish_plan/models/course.dart';
 import 'package:rubbish_plan/pages/course_edit_page.dart';
+import 'package:rubbish_plan/pages/schedule_management_page.dart';
 import 'package:rubbish_plan/providers/course_provider.dart';
 import 'package:rubbish_plan/widgets/common/text.dart';
 import 'package:rubbish_plan/widgets/course/course_detail_sheet.dart';
@@ -132,6 +133,10 @@ class _CoursePageState extends State<CoursePage> {
         ),
         const Expanded(child: SizedBox()),
         IconButton(
+          onPressed: _showSchedulePicker,
+          icon: const Icon(Icons.list_alt_rounded),
+        ),
+        IconButton(
           onPressed: _onAddCourse,
           icon: const Icon(Icons.add),
         ),
@@ -155,6 +160,10 @@ class _CoursePageState extends State<CoursePage> {
   void _goToCurrentWeek() {
     final currentWeek = courseProvider.scheduleConfig.value.getCurrentWeek();
     courseProvider.updateCurrentWeek(currentWeek);
+  }
+
+  void _showSchedulePicker() {
+    popupOrNavigate(context, const ScheduleManagementPage());
   }
 
   void _onAddCourse() {

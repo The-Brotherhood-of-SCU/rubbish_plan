@@ -128,6 +128,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scheduleSetting => 'Schedule Setting';
 
   @override
+  String get scheduleManagement => 'Schedule Management';
+
+  @override
   String get globalSetting => 'Global Setting';
 
   @override

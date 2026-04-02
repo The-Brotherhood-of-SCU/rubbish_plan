@@ -126,6 +126,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scheduleSetting => '课表设置';
 
   @override
+  String get scheduleManagement => '课表管理';
+
+  @override
   String get globalSetting => '全局设置';
 
   @override

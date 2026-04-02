@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rubbish_plan/l10n/app_localizations.dart';
 import 'package:rubbish_plan/pages/course_schedule_setting.dart';
+import 'package:rubbish_plan/pages/schedule_management_page.dart';
 import 'package:rubbish_plan/pages/software_setting_page.dart';
 import 'package:rubbish_plan/widgets/common/styled_widget.dart';
 import 'package:rubbish_plan/widgets/route/router_utils.dart';
@@ -20,6 +21,13 @@ class _ProfilePageState extends State<ProfilePage> {
       spacing: 16,
       children: [
         SizedBox(height: 16),
+        ButtonWithMaxWidth(
+          icon: Icon(Icons.list_alt),
+          onPressed: () {
+            popupOrNavigate(context, const ScheduleManagementPage());
+          },
+          child: Text(localizations.scheduleManagement),
+        ),
         ButtonWithMaxWidth(
           icon: Icon(Icons.schedule),
           onPressed: () {

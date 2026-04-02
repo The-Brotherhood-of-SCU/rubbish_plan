@@ -38,6 +38,7 @@ class TimeSlot {
 }
 
 class ScheduleConfig {
+  String id;
   String semesterName;
   DateTime semesterStartDate;
   int totalWeeks;
@@ -55,6 +56,7 @@ class ScheduleConfig {
   int get sectionsPerDay => morningSections + afternoonSections + eveningSections;
 
   ScheduleConfig({
+    this.id = 'default',
     this.semesterName = '',
     required this.semesterStartDate,
     this.totalWeeks = 20,
@@ -98,6 +100,7 @@ class ScheduleConfig {
     final breakDuration = json['breakDuration'] as int? ?? 10;
 
     return ScheduleConfig(
+      id: json['id'] as String? ?? 'default',
       semesterName: json['semesterName'] as String? ?? '',
       semesterStartDate: DateTime.parse(json['semesterStartDate'] as String),
       totalWeeks: totalWeeks,
@@ -118,6 +121,7 @@ class ScheduleConfig {
   }
 
   Map<String, dynamic> toJson() => {
+    'id': id,
     'semesterName': semesterName,
     'semesterStartDate':
         '${semesterStartDate.year}-${semesterStartDate.month.toString().padLeft(2, '0')}-${semesterStartDate.day.toString().padLeft(2, '0')}',
@@ -205,6 +209,7 @@ class ScheduleConfig {
   }
 
   ScheduleConfig copyWith({
+    String? id,
     String? semesterName,
     DateTime? semesterStartDate,
     int? totalWeeks,
@@ -220,6 +225,7 @@ class ScheduleConfig {
     bool? showWeekend,
   }) {
     return ScheduleConfig(
+      id: id ?? this.id,
       semesterName: semesterName ?? this.semesterName,
       semesterStartDate: semesterStartDate ?? this.semesterStartDate,
       totalWeeks: totalWeeks ?? this.totalWeeks,

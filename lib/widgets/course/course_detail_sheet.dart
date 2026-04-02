@@ -58,6 +58,7 @@ class CourseDetailSheet extends StatelessWidget {
                     ),
                   ),
                   IconButton(
+                    iconSize: 24,
                     icon: Icon(Icons.delete_outline,
                         color: Theme.of(context).colorScheme.error),
                     onPressed: () async {
@@ -75,6 +76,7 @@ class CourseDetailSheet extends StatelessWidget {
                   ),
                   // Duplicate
                   IconButton(
+                    iconSize: 24,
                     icon: Icon(Icons.copy_outlined,
                         color: Theme.of(context).colorScheme.primary),
                     onPressed: () {
@@ -89,6 +91,7 @@ class CourseDetailSheet extends StatelessWidget {
                   ),
                   // Edit
                   IconButton(
+                    iconSize: 24,
                     icon: Icon(Icons.edit_outlined,
                         color: Theme.of(context).colorScheme.primary),
                     onPressed: () {

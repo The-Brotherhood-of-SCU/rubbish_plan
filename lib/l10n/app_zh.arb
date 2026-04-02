@@ -36,6 +36,7 @@
     "confirmMessage":"真的要这样做吗？",
     "environmentInfo":"环境信息",
     "scheduleSetting":"课表设置",
+    "scheduleManagement":"课表管理",
     "globalSetting":"全局设置",
 
     "addCourse":"添加课程",

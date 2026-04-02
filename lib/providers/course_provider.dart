@@ -12,12 +12,15 @@ class CourseProvider {
   final ValueNotifier<List<Course>> courses = ValueNotifier<List<Course>>([]);
   final ValueNotifier<ScheduleConfig> scheduleConfig =
       ValueNotifier<ScheduleConfig>(_defaultConfig());
+  final ValueNotifier<List<ScheduleConfig>> allSchedules = ValueNotifier<List<ScheduleConfig>>([]);
   final ValueNotifier<int> currentWeek = ValueNotifier<int>(1);
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
   static ScheduleConfig _defaultConfig() {
     final now = DateTime.now();
     return ScheduleConfig(
+      id: 'default',
+      semesterName: '默认课表',
       semesterStartDate: DateTime(now.year, now.month, now.day),
       totalWeeks: 20,
     );
@@ -27,6 +30,7 @@ class CourseProvider {
     isLoading.value = true;
     try {
       courses.value = _db.getCourses();
+      allSchedules.value = _db.getAllSchedules();
       final config = _db.getScheduleConfig();
       scheduleConfig.value = config;
       currentWeek.value = config.getCurrentWeek();
@@ -35,6 +39,28 @@ class CourseProvider {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  Future<void> switchSchedule(String scheduleId) async {
+    isLoading.value = true;
+    try {
+      await _db.switchSchedule(scheduleId);
+      await _loadData();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> addSchedule(ScheduleConfig config) async {
+    await _db.addSchedule(config);
+    allSchedules.value = _db.getAllSchedules();
+    await switchSchedule(config.id);
+  }
+
+  Future<void> deleteSchedule(String scheduleId) async {
+    await _db.deleteSchedule(scheduleId);
+    // Reload everything as current schedule might have changed
+    await _loadData();
   }
 
   List<Course> getCoursesForWeek(int week) {
