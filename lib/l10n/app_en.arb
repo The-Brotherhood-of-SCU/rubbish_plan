@@ -90,6 +90,8 @@
     "fieldRequired":"This field is required",
     "invalidWeekRange":"End week must be greater than or equal to start week",
     "invalidSectionRange":"End section must be greater than start section",
+    "crossPeriodError":"Cross Period Error",
+    "crossPeriodErrorMessage":"A course cannot span across morning, afternoon, or evening periods.",
     "totalWeeks": "Total Weeks: {value}",
     "morning": "Morning",
     "afternoon": "Afternoon",

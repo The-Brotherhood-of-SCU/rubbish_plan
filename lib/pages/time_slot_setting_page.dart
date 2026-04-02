@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubbish_plan/l10n/app_localizations.dart';
 import 'package:rubbish_plan/models/course.dart';
-import 'package:rubbish_plan/widgets/route/router_utils.dart';
 
 class TimeSlotSettingResult {
   final int courseDuration;
@@ -57,17 +56,13 @@ class _TimeSlotSettingPageState extends State<TimeSlotSettingPage> {
   }
 
   void _syncFollowingSlots(int index) {
-    int startIdx = 0;
     int endIdx = 0;
     
     if (index < widget.morningSections) {
-      startIdx = 0;
       endIdx = widget.morningSections;
     } else if (index < widget.morningSections + widget.afternoonSections) {
-      startIdx = widget.morningSections;
       endIdx = widget.morningSections + widget.afternoonSections;
     } else {
-      startIdx = widget.morningSections + widget.afternoonSections;
       endIdx = widget.morningSections + widget.afternoonSections + widget.eveningSections;
     }
 

@@ -5,7 +5,7 @@ import 'package:rubbish_plan/models/course.dart';
 import 'package:rubbish_plan/providers/app_config_provider.dart';
 
 /// Displays a weekly course schedule grid with time slots and course cards.
-class CourseGrid extends StatelessWidget {
+class CourseGrid extends StatefulWidget {
   final List<Course> courses;
   final ScheduleConfig config;
   final int displayWeek;
@@ -26,15 +26,41 @@ class CourseGrid extends StatelessWidget {
   });
 
   @override
+  State<CourseGrid> createState() => _CourseGridState();
+}
+
+class _CourseGridState extends State<CourseGrid> {
+  // Store the currently selected empty cell (dayOfWeek, section)
+  int? _selectedEmptyDay;
+  int? _selectedEmptySection;
+
+  void _handleEmptyTap(int day, int section) {
+    if (_selectedEmptyDay == day && _selectedEmptySection == section) {
+      // Second tap: trigger the actual add action
+      widget.onEmptyTap?.call(day, section);
+      setState(() {
+        _selectedEmptyDay = null;
+        _selectedEmptySection = null;
+      });
+    } else {
+      // First tap: select the cell
+      setState(() {
+        _selectedEmptyDay = day;
+        _selectedEmptySection = section;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final dayNames = [
       l10n.monday, l10n.tuesday, l10n.wednesday,
       l10n.thursday, l10n.friday, l10n.saturday, l10n.sunday,
     ];
-    final sections = config.sectionsPerDay;
-    final timeSlots = config.timeSlots;
-    final dayCount = config.showWeekend ? 7 : 5;
+    final sections = widget.config.sectionsPerDay;
+    final timeSlots = widget.config.timeSlots;
+    final dayCount = widget.config.showWeekend ? 7 : 5;
 
     return Column(
       children: [
@@ -54,7 +80,7 @@ class CourseGrid extends StatelessWidget {
                   child: Row(
                     children: List.generate(dayCount, (dayIndex) {
                       final day = dayIndex + 1; // 1=Mon ... 7=Sun
-                      final dayCourses = courses
+                      final dayCourses = widget.courses
                           .where((c) => c.dayOfWeek == day)
                           .toList();
                       return _buildDayColumn(
@@ -76,7 +102,7 @@ class CourseGrid extends StatelessWidget {
 
   Widget _buildHeaderRow(BuildContext context, List<String> dayNames) {
     final theme = Theme.of(context);
-    final visibleDays = config.showWeekend ? dayNames : dayNames.sublist(0, 5);
+    final visibleDays = widget.config.showWeekend ? dayNames : dayNames.sublist(0, 5);
     return Container(
       height: 32,
       decoration: BoxDecoration(
@@ -129,6 +155,11 @@ class CourseGrid extends StatelessWidget {
   Widget _buildSectionColumn(int sections, List<TimeSlot> timeSlots, BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
+    
+    // Calculate boundaries
+    final morningEnd = widget.config.morningSections;
+    final afternoonEnd = widget.config.morningSections + widget.config.afternoonSections;
+
     return SizedBox(
       width: 52,
       child: Column(
@@ -137,11 +168,17 @@ class CourseGrid extends StatelessWidget {
           final startStr = slot != null
               ? '${slot.startTime.hour.toString().padLeft(2, '0')}:${slot.startTime.minute.toString().padLeft(2, '0')}'
               : '';
+              
+          final isBoundary = (i + 1 == morningEnd) || (i + 1 == afternoonEnd);
+              
           return Container(
             height: 72,
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: theme.colorScheme.outlineVariant, width: 0.5),
+                bottom: BorderSide(
+                  color: isBoundary ? theme.colorScheme.primary.withAlpha(150) : theme.colorScheme.outlineVariant, 
+                  width: isBoundary ? 1.5 : 0.5,
+                ),
                 right: BorderSide(color: theme.colorScheme.outlineVariant),
               ),
             ),
@@ -178,6 +215,10 @@ class CourseGrid extends StatelessWidget {
   ) {
     final theme = Theme.of(context);
     final rowHeight = 72.0;
+    
+    // Calculate boundaries
+    final morningEnd = widget.config.morningSections;
+    final afternoonEnd = widget.config.morningSections + widget.config.afternoonSections;
 
     return Expanded(
       child: SizedBox(
@@ -186,6 +227,8 @@ class CourseGrid extends StatelessWidget {
           children: [
             // Grid lines
             ...List.generate(sections, (i) {
+              final isBoundary = (i + 1 == morningEnd) || (i + 1 == afternoonEnd);
+              
               return Positioned(
                 top: i * rowHeight,
                 left: 0,
@@ -194,7 +237,10 @@ class CourseGrid extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border(
-                      bottom: BorderSide(color: theme.colorScheme.outlineVariant, width: 0.5),
+                      bottom: BorderSide(
+                        color: isBoundary ? theme.colorScheme.primary.withAlpha(150) : theme.colorScheme.outlineVariant, 
+                        width: isBoundary ? 1.5 : 0.5,
+                      ),
                       right: BorderSide(color: theme.colorScheme.outlineVariant, width: 0.5),
                     ),
                   ),
@@ -214,21 +260,25 @@ class CourseGrid extends StatelessWidget {
                   constraints: BoxConstraints(minHeight: minHeight),
                   child: _CourseCard(
                     course: course,
-                    config: config,
-                    displayWeek: displayWeek,
-                    onTap: onCourseTap != null ? () => onCourseTap!(course) : null,
-                    onLongPress: onCourseLongPress != null ? () => onCourseLongPress!(course) : null,
+                    config: widget.config,
+                    displayWeek: widget.displayWeek,
+                    onTap: widget.onCourseTap != null ? () => widget.onCourseTap!(course) : null,
+                    onLongPress: widget.onCourseLongPress != null ? () => widget.onCourseLongPress!(course) : null,
                   ),
                 ),
               );
             }),
-            // Invisible tap targets for empty cells
+            // Invisible tap targets for empty cells, and Add icon for selected empty cell
             ...List.generate(sections, (i) {
+              final section = i + 1;
               // Skip sections that are covered by a course card
               final hasCourse = dayCourses.any(
-                (c) => i + 1 >= c.startSection && i + 1 <= c.endSection,
+                (c) => section >= c.startSection && section <= c.endSection,
               );
               if (hasCourse) return const SizedBox.shrink();
+              
+              final isSelected = _selectedEmptyDay == day && _selectedEmptySection == section;
+              
               return Positioned(
                 top: i * rowHeight,
                 left: 0,
@@ -236,7 +286,24 @@ class CourseGrid extends StatelessWidget {
                 height: rowHeight,
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
-                  onTap: onEmptyTap != null ? () => onEmptyTap!(day, i + 1) : null,
+                  onTap: widget.onEmptyTap != null ? () => _handleEmptyTap(day, section) : null,
+                  child: isSelected 
+                      ? Container(
+                          margin: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            color: theme.colorScheme.primary.withAlpha(100), // e.g. pinkish/primary with opacity
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(color: theme.colorScheme.primary.withAlpha(150), width: 1),
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.add,
+                              color: theme.colorScheme.onPrimaryContainer,
+                              size: 32,
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
                 ),
               );
             }),

@@ -327,6 +327,29 @@ class _CourseEditPageState extends State<CourseEditPage> {
 
     final l10n = AppLocalizations.of(context)!;
 
+    // Check for cross-period validation
+    final config = courseProvider.scheduleConfig.value;
+    final morningEnd = config.morningSections;
+    final afternoonEnd = config.morningSections + config.afternoonSections;
+    
+    bool isValidPeriod = false;
+    if (_startSection <= morningEnd && _endSection <= morningEnd) {
+      isValidPeriod = true; // Morning
+    } else if (_startSection > morningEnd && _startSection <= afternoonEnd && 
+               _endSection > morningEnd && _endSection <= afternoonEnd) {
+      isValidPeriod = true; // Afternoon
+    } else if (_startSection > afternoonEnd && _endSection > afternoonEnd) {
+      isValidPeriod = true; // Evening
+    }
+
+    if (!isValidPeriod) {
+      showInfoDialog(
+        title: l10n.crossPeriodError,
+        content: l10n.crossPeriodErrorMessage,
+      );
+      return;
+    }
+
     final course = Course(
       id: widget.course?.id,
       name: _nameController.text.trim(),

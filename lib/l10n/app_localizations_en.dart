@@ -295,6 +295,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'End section must be greater than start section';
 
   @override
+  String get crossPeriodError => 'Cross Period Error';
+
+  @override
+  String get crossPeriodErrorMessage =>
+      'A course cannot span across morning, afternoon, or evening periods.';
+
+  @override
   String totalWeeks(Object value) {
     return 'Total Weeks: $value';
   }

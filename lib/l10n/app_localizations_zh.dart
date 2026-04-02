@@ -289,6 +289,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get invalidSectionRange => '结束节次必须大于开始节次';
 
   @override
+  String get crossPeriodError => '跨时间段错误';
+
+  @override
+  String get crossPeriodErrorMessage => '一门课程不能跨越上午、下午或晚上。';
+
+  @override
   String totalWeeks(Object value) {
     return '总周数: $value';
   }

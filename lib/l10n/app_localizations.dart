@@ -643,6 +643,18 @@ abstract class AppLocalizations {
   /// **'End section must be greater than start section'**
   String get invalidSectionRange;
 
+  /// No description provided for @crossPeriodError.
+  ///
+  /// In en, this message translates to:
+  /// **'Cross Period Error'**
+  String get crossPeriodError;
+
+  /// No description provided for @crossPeriodErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'A course cannot span across morning, afternoon, or evening periods.'**
+  String get crossPeriodErrorMessage;
+
   /// No description provided for @totalWeeks.
   ///
   /// In en, this message translates to:

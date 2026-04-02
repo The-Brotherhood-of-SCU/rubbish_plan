@@ -5,6 +5,7 @@ import 'package:rubbish_plan/models/course.dart';
 import 'package:rubbish_plan/pages/course_edit_page.dart';
 import 'package:rubbish_plan/providers/course_provider.dart';
 import 'package:rubbish_plan/widgets/common/text.dart';
+import 'package:rubbish_plan/widgets/course/course_detail_sheet.dart';
 import 'package:rubbish_plan/widgets/course/course_grid.dart';
 import 'package:rubbish_plan/widgets/dialog/dialog.dart';
 import 'package:rubbish_plan/widgets/route/router_utils.dart';
@@ -161,7 +162,17 @@ class _CoursePageState extends State<CoursePage> {
   }
 
   void _onCourseTap(Course course) {
-    popupOrNavigate(context, CourseEditPage(course: course));
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => CourseDetailSheet(
+        course: course,
+        courseProvider: courseProvider,
+      ),
+    );
   }
 
   void _onCourseLongPress(Course course) {
