@@ -95,7 +95,7 @@ Future<dynamic> popupOrNavigate(
   if (isInPopup) {
     Navigator.push(
       context,
-      CupertinoPageRoute(
+      MaterialPageRoute(
         builder: (builder) {
           return page;
         },
@@ -122,7 +122,7 @@ Future<dynamic> popupOrNavigate(
   } else {
     return await Navigator.push(
       context,
-      CupertinoPageRoute(
+      MaterialPageRoute(
         builder: (builder) {
           return page;
         },
