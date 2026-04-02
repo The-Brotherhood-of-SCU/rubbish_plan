@@ -1,4 +1,4 @@
-package com.example.rubbish_plan
+﻿package com.example.rubbish_plan
 
 import io.flutter.embedding.android.FlutterActivity
 

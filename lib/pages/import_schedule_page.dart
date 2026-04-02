@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:rubbish_plan/l10n/app_localizations.dart';
 import 'package:rubbish_plan/models/course.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show kIsWeb, kIsWasm;
+﻿import 'package:flutter/foundation.dart' show kIsWeb, kIsWasm;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:rubbish_plan/providers/environment_info/native.dart'
     if (dart.library.js_interop) 'package:rubbish_plan/providers/environment_info/web.dart';

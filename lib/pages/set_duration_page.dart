@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:rubbish_plan/injection/injector.dart';
 import 'package:rubbish_plan/l10n/app_localizations.dart';
 import 'package:rubbish_plan/providers/app_config_provider.dart';

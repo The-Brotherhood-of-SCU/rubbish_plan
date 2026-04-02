@@ -1,4 +1,4 @@
-import 'dart:convert';
+﻿import 'dart:convert';
 
 import 'package:hive_ce/hive.dart';
 import 'package:rubbish_plan/models/course.dart';

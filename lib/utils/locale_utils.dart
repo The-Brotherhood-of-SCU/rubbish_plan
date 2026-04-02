@@ -1,4 +1,4 @@
-import 'dart:ui';
+﻿import 'dart:ui';
 
 Locale? parseLocale(String? lang) {
   if (lang == null) {

@@ -1,4 +1,4 @@
-import 'package:web/web.dart' as html;
+﻿import 'package:web/web.dart' as html;
 
 String getEnvironmentInfo(){
   var navigator=html.window.navigator;

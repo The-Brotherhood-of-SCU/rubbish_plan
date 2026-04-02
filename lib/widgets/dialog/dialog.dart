@@ -1,4 +1,4 @@
-import 'package:async/async.dart';
+﻿import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'package:rubbish_plan/injection/injector.dart';
 import 'package:rubbish_plan/providers/app_config_provider.dart';
