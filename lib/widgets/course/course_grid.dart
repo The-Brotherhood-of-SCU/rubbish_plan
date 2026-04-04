@@ -3,6 +3,48 @@ import 'package:rubbish_plan/l10n/app_localizations.dart';
 import 'package:rubbish_plan/models/course.dart';
 import 'package:rubbish_plan/widgets/course/course_card.dart';
 
+List<Course> selectVisibleCoursesForDay(List<Course> courses, int displayWeek) {
+  final visibleCourses =
+      courses.where((course) => course.isInWeekRange(displayWeek)).toList()
+        ..sort(_compareCoursesForLayout);
+
+  final futureCourses =
+      courses.where((course) => displayWeek < course.startWeek).toList()
+        ..sort((a, b) {
+          final weekCompare = a.startWeek.compareTo(b.startWeek);
+          if (weekCompare != 0) return weekCompare;
+          return _compareCoursesForLayout(a, b);
+        });
+
+  for (final course in futureCourses) {
+    final overlapsVisible = visibleCourses.any(
+      (visibleCourse) => _coursesOverlapInSections(visibleCourse, course),
+    );
+    if (!overlapsVisible) {
+      visibleCourses.add(course);
+    }
+  }
+
+  visibleCourses.sort(_compareCoursesForLayout);
+  return visibleCourses;
+}
+
+int _compareCoursesForLayout(Course a, Course b) {
+  final sectionCompare = a.startSection.compareTo(b.startSection);
+  if (sectionCompare != 0) return sectionCompare;
+
+  final durationCompare = (b.endSection - b.startSection).compareTo(
+    a.endSection - a.startSection,
+  );
+  if (durationCompare != 0) return durationCompare;
+
+  return a.startWeek.compareTo(b.startWeek);
+}
+
+bool _coursesOverlapInSections(Course a, Course b) {
+  return !(a.endSection < b.startSection || a.startSection > b.endSection);
+}
+
 /// Displays a weekly course schedule grid with time slots and course cards.
 class CourseGrid extends StatefulWidget {
   final List<Course> courses;
@@ -84,13 +126,12 @@ class _CourseGridState extends State<CourseGrid> {
                   child: Row(
                     children: List.generate(dayCount, (dayIndex) {
                       final day = dayIndex + 1; // 1=Mon ... 7=Sun
-                      final dayCourses = widget.courses
-                          .where(
-                            (c) =>
-                                c.dayOfWeek == day &&
-                                c.isInWeekRange(widget.displayWeek),
-                          )
-                          .toList();
+                      final dayCourses = selectVisibleCoursesForDay(
+                        widget.courses
+                            .where((c) => c.dayOfWeek == day)
+                            .toList(),
+                        widget.displayWeek,
+                      );
                       return _buildDayColumn(
                         context,
                         day,
