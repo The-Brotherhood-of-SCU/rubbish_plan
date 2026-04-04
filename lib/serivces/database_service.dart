@@ -31,8 +31,9 @@ class DatabaseService {
         try {
           defaultConfig = ScheduleConfig.fromJson(_decodeJson(jsonStr));
           defaultConfig.id = 'default';
-          if (defaultConfig.semesterName.isEmpty)
+          if (defaultConfig.semesterName.isEmpty) {
             defaultConfig.semesterName = '默认课表';
+          }
         } catch (_) {
           defaultConfig = _defaultScheduleConfig();
         }
