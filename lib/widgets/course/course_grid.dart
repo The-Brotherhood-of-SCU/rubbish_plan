@@ -85,7 +85,11 @@ class _CourseGridState extends State<CourseGrid> {
                     children: List.generate(dayCount, (dayIndex) {
                       final day = dayIndex + 1; // 1=Mon ... 7=Sun
                       final dayCourses = widget.courses
-                          .where((c) => c.dayOfWeek == day)
+                          .where(
+                            (c) =>
+                                c.dayOfWeek == day &&
+                                c.isInWeekRange(widget.displayWeek),
+                          )
                           .toList();
                       return _buildDayColumn(
                         context,

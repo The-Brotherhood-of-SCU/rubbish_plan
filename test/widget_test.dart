@@ -1,30 +1,29 @@
-﻿// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rubbish_plan/app.dart';
-
+import 'package:rubbish_plan/models/course.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+  group('Course week visibility', () {
+    final course = Course(
+      name: '高数',
+      teacher: '老师',
+      location: '教室',
+      startWeek: 1,
+      endWeek: 16,
+      dayOfWeek: 1,
+      startSection: 1,
+      endSection: 2,
+      colorValue: 0xFF2196F3,
+      weekType: WeekType.odd,
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('keeps odd-week ghost card within configured week range', () {
+      expect(course.isInWeekRange(2), isTrue);
+      expect(course.isActiveInWeek(2), isFalse);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('hides course outside configured week range', () {
+      expect(course.isInWeekRange(17), isFalse);
+      expect(course.isActiveInWeek(17), isFalse);
+    });
   });
 }

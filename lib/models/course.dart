@@ -392,9 +392,13 @@ class Course {
 
   set color(Color c) => colorValue = c.toARGB32();
 
+  bool isInWeekRange(int week) {
+    return week >= startWeek && week <= endWeek;
+  }
+
   /// Check if this course is active in the given week
   bool isActiveInWeek(int week) {
-    if (week < startWeek || week > endWeek) return false;
+    if (!isInWeekRange(week)) return false;
     if (weekType == WeekType.odd && week.isEven) return false;
     if (weekType == WeekType.even && week.isOdd) return false;
     return true;
