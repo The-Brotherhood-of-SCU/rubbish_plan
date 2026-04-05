@@ -24,6 +24,45 @@ class AppLocalizationsZh extends AppLocalizations {
   String get campus => '校园';
 
   @override
+  String get classroomQuery => '教室查询';
+
+  @override
+  String get classroomQueryDesc => '查询教室空闲、借用和上课信息';
+
+  @override
+  String get selectCampus => '选择校区';
+
+  @override
+  String get selectBuilding => '选择教学楼';
+
+  @override
+  String get allBuildings => '全部教学楼';
+
+  @override
+  String get seats => '座';
+
+  @override
+  String get free => '空闲';
+
+  @override
+  String get inClass => '上课中';
+
+  @override
+  String get borrowed => '已借用';
+
+  @override
+  String get period => '节次';
+
+  @override
+  String get loading => '加载中...';
+
+  @override
+  String get loadFailed => '加载失败，点击重试';
+
+  @override
+  String get appOnly => '仅 App 端可使用';
+
+  @override
   String get softwareSetting => '软件设置';
 
   @override

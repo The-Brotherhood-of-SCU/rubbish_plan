@@ -24,6 +24,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String get campus => 'Campus';
 
   @override
+  String get classroomQuery => 'Classroom Query';
+
+  @override
+  String get classroomQueryDesc =>
+      'Check classroom availability and borrowing status';
+
+  @override
+  String get selectCampus => 'Select Campus';
+
+  @override
+  String get selectBuilding => 'Select Building';
+
+  @override
+  String get allBuildings => 'All Buildings';
+
+  @override
+  String get seats => 'seats';
+
+  @override
+  String get free => 'Free';
+
+  @override
+  String get inClass => 'In Class';
+
+  @override
+  String get borrowed => 'Borrowed';
+
+  @override
+  String get period => 'Period';
+
+  @override
+  String get loading => 'Loading...';
+
+  @override
+  String get loadFailed => 'Load failed, tap to retry';
+
+  @override
+  String get appOnly => 'Available on App only';
+
+  @override
   String get softwareSetting => 'Software Setting';
 
   @override

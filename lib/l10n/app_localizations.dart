@@ -133,6 +133,84 @@ abstract class AppLocalizations {
   /// **'Campus'**
   String get campus;
 
+  /// No description provided for @classroomQuery.
+  ///
+  /// In en, this message translates to:
+  /// **'Classroom Query'**
+  String get classroomQuery;
+
+  /// No description provided for @classroomQueryDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Check classroom availability and borrowing status'**
+  String get classroomQueryDesc;
+
+  /// No description provided for @selectCampus.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Campus'**
+  String get selectCampus;
+
+  /// No description provided for @selectBuilding.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Building'**
+  String get selectBuilding;
+
+  /// No description provided for @allBuildings.
+  ///
+  /// In en, this message translates to:
+  /// **'All Buildings'**
+  String get allBuildings;
+
+  /// No description provided for @seats.
+  ///
+  /// In en, this message translates to:
+  /// **'seats'**
+  String get seats;
+
+  /// No description provided for @free.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get free;
+
+  /// No description provided for @inClass.
+  ///
+  /// In en, this message translates to:
+  /// **'In Class'**
+  String get inClass;
+
+  /// No description provided for @borrowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Borrowed'**
+  String get borrowed;
+
+  /// No description provided for @period.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get period;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @loadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Load failed, tap to retry'**
+  String get loadFailed;
+
+  /// No description provided for @appOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Available on App only'**
+  String get appOnly;
+
   /// No description provided for @softwareSetting.
   ///
   /// In en, this message translates to:
